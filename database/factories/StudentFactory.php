@@ -16,7 +16,7 @@ class StudentFactory extends Factory
     {
         $date = $this->faker->dateTimeBetween('-30 years', '-20 years');
         $birth = $date->format('d-m-Y');
-        $number = $date->format('dmY');
+        $number = $this->generateUniqueNumber($date);
 
         return [
             'name' => $this->faker->name(),
@@ -25,10 +25,11 @@ class StudentFactory extends Factory
         ];
     }
 
-    public function generateUniqueNumber()
+    public function generateUniqueNumber($date)
     {
+        $i = 1;
         do {
-            $number = random_int(100000, 999999);
+            $number = $date->format('dmY').sprintf('%03d', $i++);
         } while (Student::where("number", $number)->first());
 
         return $number;

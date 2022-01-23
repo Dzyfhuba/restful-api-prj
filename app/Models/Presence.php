@@ -10,6 +10,8 @@ class Presence extends Model
     use HasFactory;
 
     protected $fillable = [
-        'number'
+        'name',
+        'number',
+        'status'
     ];
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -36,6 +37,11 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        if (empty($request->number)) {
+            $number = $this->generateUniqueNumber($request->birth);
+            $request->merge(['number' => $number]);
+        }
+
         Student::create($request->all());
         return [
             'status' => 'success',
@@ -100,5 +106,15 @@ class StudentController extends Controller
             'status' => 'success',
             'student' => $student
         ];
+    }
+
+    public function generateUniqueNumber($date)
+    {
+        $i = 1;
+        do {
+            $number = str_replace('-', '', $date).sprintf('%03d', $i++);
+        } while (Student::where("number", $number)->first());
+
+        return $number;
     }
 }

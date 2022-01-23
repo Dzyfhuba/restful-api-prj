@@ -15,7 +15,9 @@ class CreatePresencesTable extends Migration
     {
         Schema::create('presences', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('number');
+            $table->enum('status', ['present', 'not present', 'permit', 'sick', 'forget'])->default('forget');
             $table->timestamps();
         });
     }
