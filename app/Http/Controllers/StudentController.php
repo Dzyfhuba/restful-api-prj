@@ -77,7 +77,13 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Student::where('id', $id)->update($request->all());
+        return [
+            'status' => 'success',
+            'student' => [
+                $request->all()
+            ]
+        ];
     }
 
     /**
@@ -88,6 +94,11 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $student = Student::where('id', $id)->get();
+        Student::where('id', $id)->delete();
+        return [
+            'status' => 'success',
+            'student' => $student
+        ];
     }
 }

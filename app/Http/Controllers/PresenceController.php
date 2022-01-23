@@ -41,21 +41,22 @@ class PresenceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Presence  $presence
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Presence $presence)
+    public function show($id)
     {
-        //
+        $presence = Presence::where('id', $id)->get();
+        return response()->json($presence);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Presence  $presence
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Presence $presence)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +65,10 @@ class PresenceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Presence  $presence
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Presence $presence)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +76,10 @@ class PresenceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Presence  $presence
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Presence $presence)
+    public function destroy($id)
     {
         //
     }

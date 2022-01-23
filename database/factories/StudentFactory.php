@@ -14,10 +14,14 @@ class StudentFactory extends Factory
      */
     public function definition()
     {
+        $date = $this->faker->dateTimeBetween('-30 years', '-20 years');
+        $birth = $date->format('d-m-Y');
+        $number = $date->format('dmY');
+
         return [
             'name' => $this->faker->name(),
-            'number' => $this->generateUniqueNumber(),
-            'birth' => $this->faker->dateTimeBetween('-30 years', '-20 years')
+            'number' => $number,
+            'birth' => $birth
         ];
     }
 
