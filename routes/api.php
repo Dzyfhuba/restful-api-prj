@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Http\Request;
@@ -22,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('presence', PresenceController::class, ['except' => ['create']]);
 Route::resource('student', StudentController::class, ['except' => ['create']]);
+Route::resource('classroom', ClassroomController::class, ['except' => ['create']]);
