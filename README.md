@@ -1,4 +1,4 @@
-# Himatif Website
+# RESTful API PRJ
 Built using laravel 8.
 ## Installation Procedure
 ### The prerequisites needed are as follows:
