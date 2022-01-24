@@ -20,5 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('presence', PresenceController::class, ['except' => ['create', 'edit']]);
-Route::resource('student', StudentController::class, ['except' => ['create', 'edit']]);
+Route::resource('presence', PresenceController::class, ['except' => ['create']]);
+Route::resource('student', StudentController::class, ['except' => ['create']]);

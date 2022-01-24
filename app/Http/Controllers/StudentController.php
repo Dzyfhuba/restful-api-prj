@@ -59,7 +59,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        $student = Student::where('id', $id)->first();
+        $student = Student::where('id', $id)->get();
         return response()->json($student);
     }
 
@@ -71,7 +71,8 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = Student::where('id', $id)->get();
+        return response()->json($student);
     }
 
     /**

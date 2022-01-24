@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Presence;
+use App\Models\Classroom;
 use Illuminate\Http\Request;
 
-class PresenceController extends Controller
+class ClassroomController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class PresenceController extends Controller
      */
     public function index()
     {
-        $presence = Presence::all();
-        return response()->json($presence);
+        $classroom = Classroom::all();
+        return response()->json($classroom);
     }
 
     /**
@@ -36,12 +36,10 @@ class PresenceController extends Controller
      */
     public function store(Request $request)
     {
-        Presence::create($request->all());
+        Classroom::create($request->all());
         return [
             'status' => 'success',
-            'presence' => [
-                $request->all()
-            ]
+            'classroom' => $request->all()
         ];
     }
 
@@ -53,8 +51,8 @@ class PresenceController extends Controller
      */
     public function show($id)
     {
-        $presence = Presence::where('id', $id)->get();
-        return response()->json($presence);
+        $classroom = Classroom::where('id', $id)->get();
+        return response()->json($classroom);
     }
 
     /**
@@ -65,8 +63,8 @@ class PresenceController extends Controller
      */
     public function edit($id)
     {
-        $presence = Presence::where('id', $id)->get();
-        return response()->json($presence);
+        $classroom = Classroom::where('id', $id)->get();
+        return response()->json($classroom);
     }
 
     /**
@@ -78,10 +76,10 @@ class PresenceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Presence::where('id', $id)->update($request->all());
+        Classroom::where('id', $id)->update($request->all());
         return [
             'status' => 'success',
-            'presence' => [
+            'classroom' => [
                 $request->all()
             ]
         ];
@@ -95,11 +93,11 @@ class PresenceController extends Controller
      */
     public function destroy($id)
     {
-        $presence = Presence::where('id', $id)->get();
-        Presence::where('id', $id)->delete();
+        $classroom = Classroom::where('id', $id)->get();
+        Classroom::where('id', $id)->delete();
         return [
             'status' => 'success',
-            'presence' => $presence
+            'classroom' => $classroom
         ];
     }
 }
