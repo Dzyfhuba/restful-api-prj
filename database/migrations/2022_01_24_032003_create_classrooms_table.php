@@ -17,6 +17,8 @@ class CreateClassroomsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('classroom');
+            $table->double('latitude');
+            $table->double('longitude');
             $table->timestamps();
         });
     }

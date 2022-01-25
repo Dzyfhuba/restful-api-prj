@@ -18,6 +18,8 @@ class CreatePresencesTable extends Migration
             $table->foreignId('id_classroom')->references('id')->on('classrooms');
             $table->string('number');
             $table->enum('status', ['present', 'not present', 'permit', 'sick', 'forget'])->default('forget');
+            $table->double('latitude');
+            $table->double('longitude');
             $table->timestamps();
 
             $table->foreign('number')->references('number')->on('students');

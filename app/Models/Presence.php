@@ -12,6 +12,8 @@ class Presence extends Model
     protected $fillable = [
         'id_classroom',
         'number',
-        'status'
+        'status',
+        'latitude',
+        'longitude'
     ];
 }

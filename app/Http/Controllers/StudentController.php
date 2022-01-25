@@ -84,6 +84,11 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (empty($request->number)) {
+            $number = $this->generateUniqueNumber($request->birth);
+            $request->merge(['number' => $number]);
+        }
+
         Student::where('id', $id)->update($request->all());
         return [
             'status' => 'success',

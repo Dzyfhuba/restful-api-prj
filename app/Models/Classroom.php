@@ -12,5 +12,7 @@ class Classroom extends Model
     protected $fillable = [
         'name',
         'classroom',
+        'latitude',
+        'longitude'
     ];
 }
